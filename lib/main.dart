@@ -5,7 +5,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:toury/core/services/local_storage.dart';
 import 'package:toury/core/utils/themes.dart';
+import 'package:toury/featuers/admin/products_manager/presentation/cubit/product_manager_cubit.dart';
 import 'package:toury/featuers/auth/presentation/cubit/auth_cubit.dart';
+import 'package:toury/featuers/customer/cart/presentation/cubit/cubit/cart_cubit.dart';
 import 'package:toury/featuers/intro/pages/splash.dart';
 import 'package:toury/firebase_options.dart';
 
@@ -28,8 +30,16 @@ class Far5eti extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return BlocProvider(
-          create: (context) => AuthCubit(),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider(
+              create: (context) => AuthCubit(),
+            ),
+            BlocProvider(
+              create: (context) => CartCubit(),
+            ),
+            BlocProvider(create: (context) => ProductManagerCubit()),
+          ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: AppThemes.lightTheme,

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:toury/core/functions/navigation.dart';
+import 'package:toury/core/utils/colors.dart';
 import 'package:toury/core/utils/text_style.dart';
 import 'package:toury/featuers/customer/home/presentation/widgets/category_details.dart';
 
@@ -80,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         borderRadius: BorderRadius.circular(16.r),
                         boxShadow: [
                           BoxShadow(
-                            color: Colors.black12,
+                            color: AppColors.black.withOpacity(0.2),
                             blurRadius: 10.r,
                             offset: const Offset(0, 4),
                           ),
@@ -92,14 +93,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           Expanded(
                             child: Text(
                               category,
-                              style: TextStyle(
-                                fontSize: 20.sp,
-                                fontWeight: FontWeight.bold,
-                              ),
+                              style: getTitleStyle(color: AppColors.black),
                             ),
                           ),
                           Icon(Icons.arrow_forward_ios,
-                              size: 20.sp, color: Colors.grey),
+                              size: 20.sp, color: AppColors.greyColor),
                         ],
                       ),
                     ),
@@ -107,7 +105,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
       ),
-      backgroundColor: const Color(0xFFF5F5F5),
+      backgroundColor:AppColors.accentColor
+      // const Color(0xFFF5F5F5),
     );
   }
 }

@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:toury/core/functions/navigation.dart';
 import 'package:toury/core/services/local_storage.dart';
 import 'package:toury/core/utils/text_style.dart';
-import 'package:toury/featuers/intro/pages/welcome_screen.dart';
+import 'package:toury/featuers/auth/presentation/pages/login_view.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -59,7 +59,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             icon: const Icon(Icons.logout),
             onPressed: () {
               AppLocalStorage.removeData(key: AppLocalStorage.userToken);
-              pushReplacement(context,const WelcomeScreen());
+              pushReplacement(context,const LoginView());
             },
           ),
         ],

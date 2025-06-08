@@ -6,9 +6,9 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:toury/core/functions/navigation.dart';
 import 'package:toury/core/utils/colors.dart';
 import 'package:toury/core/widgets/custom_button.dart';
+import 'package:toury/featuers/auth/presentation/pages/login_view.dart';
 import 'package:toury/featuers/intro/pages/onboarding/data/intro_model.dart';
 import 'package:toury/featuers/intro/pages/onboarding/presentation/widgets/boarding_item.dart';
-import 'package:toury/featuers/intro/pages/welcome_screen.dart';
 
 
 class OnboardingScreen extends StatefulWidget {
@@ -80,7 +80,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           width: 100.w,
                           text: 'هيا بنا',
                           onPressed: () {
-                           pushAndRemoveUntil(context,const WelcomeScreen()); 
+                           pushAndRemoveUntil(context,const LoginView()); 
                           },
                         ),
                         if (currentPage != introPages.length - 1)

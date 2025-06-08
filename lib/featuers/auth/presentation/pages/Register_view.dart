@@ -10,6 +10,7 @@ import 'package:toury/core/functions/dialogs.dart';
 import 'package:toury/core/functions/email_validate.dart';
 import 'package:toury/core/functions/navigation.dart';
 import 'package:toury/core/utils/colors.dart';
+import 'package:toury/core/utils/constants.dart';
 import 'package:toury/core/utils/text_style.dart';
 import 'package:toury/core/widgets/custom_button.dart';
 import 'package:toury/featuers/admin/admin_nav_bar.dart';
@@ -19,8 +20,8 @@ import 'package:toury/featuers/auth/presentation/pages/login_view.dart';
 import 'package:toury/featuers/customer/customer_nav_bar.dart';
 
 class RegisterView extends StatefulWidget {
-  const RegisterView({super.key, required this.userType});
-  final UserType userType;
+  const RegisterView({super.key, });
+  
 
   @override
   _RegisterViewState createState() => _RegisterViewState();
@@ -34,9 +35,9 @@ class _RegisterViewState extends State<RegisterView> {
 
   bool isVisible = true;
 
-  String handleUserType() {
-    return widget.userType == UserType.admin ? 'أدمن' : 'عميل';
-  }
+  // String handleUserType() {
+  //   return widget.userType == UserType.admin ? 'أدمن' : 'عميل';
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -55,7 +56,7 @@ class _RegisterViewState extends State<RegisterView> {
               color: AppColors.color1,
             );
           } else if (state is AuthSuccessState) {
-            if (widget.userType == UserType.admin) {
+            if (_emailController == adminEmail) {
               pushAndRemoveUntil(context,const AdminNavBar());
               log('Admin signup');
             } else {
@@ -78,7 +79,7 @@ class _RegisterViewState extends State<RegisterView> {
                           width: 200.w, height: 200.h),
                       const SizedBox(height: 20),
                       Text(
-                        'سجل حساب جديد كـ "${handleUserType()}"',
+                        'سجل حساب جديد',
                         style: getTitleStyle(),
                       ),
                       const SizedBox(height: 30),
@@ -152,7 +153,7 @@ class _RegisterViewState extends State<RegisterView> {
                                   email: _emailController.text,
                                   password: _passwordController.text,
                                   name: _displayName.text,
-                                  userType: widget.userType,
+                                  userType: UserType.customer,
                                 );
                           }
                         },
@@ -170,7 +171,7 @@ class _RegisterViewState extends State<RegisterView> {
                             TextButton(
                                 onPressed: () {
                                   pushReplacement(context,
-                                      LoginView(userType: widget.userType));
+                                    const  LoginView());
                                 },
                                 child: Text(
                                   'سجل دخول',

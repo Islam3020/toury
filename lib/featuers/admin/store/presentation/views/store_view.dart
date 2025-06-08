@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:toury/core/functions/navigation.dart';
 import 'package:toury/core/services/local_storage.dart';
 import 'package:toury/featuers/admin/store/presentation/widgets/order_card.dart';
-import 'package:toury/featuers/intro/pages/welcome_screen.dart';
+import 'package:toury/featuers/auth/presentation/pages/login_view.dart';
 
 class StoreView extends StatefulWidget {
   const StoreView({super.key});
@@ -62,7 +62,7 @@ class _StoreViewState extends State<StoreView> {
             icon: const Icon(Icons.logout),
             onPressed: () {
               AppLocalStorage.removeData(key: AppLocalStorage.userToken);
-              pushReplacement(context,const WelcomeScreen());
+              pushReplacement(context,const LoginView());
             },
           ),
         actions: [

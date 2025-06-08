@@ -5,11 +5,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:lottie/lottie.dart';
-import 'package:toury/core/enum/user_type_enum.dart';
 import 'package:toury/core/functions/dialogs.dart';
 import 'package:toury/core/functions/email_validate.dart';
 import 'package:toury/core/functions/navigation.dart';
 import 'package:toury/core/utils/colors.dart';
+import 'package:toury/core/utils/constants.dart';
 import 'package:toury/core/utils/text_style.dart';
 import 'package:toury/core/widgets/custom_button.dart';
 import 'package:toury/featuers/admin/admin_nav_bar.dart';
@@ -19,8 +19,8 @@ import 'package:toury/featuers/auth/presentation/pages/Register_view.dart';
 import 'package:toury/featuers/customer/customer_nav_bar.dart';
 
 class LoginView extends StatefulWidget {
-  const LoginView({super.key, required this.userType});
-  final UserType userType;
+  const LoginView({super.key, });
+  
 
   @override
   _LoginViewState createState() => _LoginViewState();
@@ -33,9 +33,9 @@ class _LoginViewState extends State<LoginView> {
 
   bool isVisible = true;
 
-  String handleUserType() {
-    return widget.userType == UserType.admin ? 'أدمن' : 'عميل';
-  }
+  // String handleUserType() {
+  //   return widget.userType == UserType.admin ? 'أدمن' : 'عميل';
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -50,14 +50,15 @@ class _LoginViewState extends State<LoginView> {
         listener: (context, state) {
           if (state is AuthErrorState) {
             Navigator.pop(context);
-            showErrorDialog(context, state.error);
+            showToast(context, state.error,isError: true);
           } else if (state is AuthLoadingState) {
             const CircularProgressIndicator(
               color: AppColors.color1,
             );
           } else if (state is AuthSuccessState) {
-            if (widget.userType == UserType.admin) {
+            if (_emailController.text== adminEmail) {
               pushAndRemoveUntil(context, const AdminNavBar());
+              showToast(context, 'تم تسجيل الدخول بنجاح');
               log('admin');
             } else {
               log('customer');
@@ -83,7 +84,7 @@ class _LoginViewState extends State<LoginView> {
                           width: 200.w, height: 200.h),
                       const SizedBox(height: 20),
                       Text(
-                        'سجل دخول الان كـ "${handleUserType()}"',
+                        'سجل دخول الان ',
                         style: getTitleStyle(),
                       ),
                       const SizedBox(height: 30),
@@ -92,7 +93,7 @@ class _LoginViewState extends State<LoginView> {
                         controller: _emailController,
                         textAlign: TextAlign.end,
                         decoration: const InputDecoration(
-                          hintText: 'Sayed@example.com',
+                          hintText: 'ادخل الايميل',
                           prefixIcon: Icon(Icons.email_rounded),
                         ),
                         textInputAction: TextInputAction.next,
@@ -165,7 +166,7 @@ class _LoginViewState extends State<LoginView> {
                             TextButton(
                                 onPressed: () {
                                   pushReplacement(context,
-                                      RegisterView(userType: widget.userType));
+                                    const  RegisterView());
                                 },
                                 child: Text(
                                   'سجل الان',

@@ -48,15 +48,9 @@ class OrderCard extends StatelessWidget {
           children: [
             // Header
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              
               children: [
-                Text(
-                  'طلب #${orderId.substring(0, 6)}',
-                  style: TextStyle(
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+               
                 Text(
                   _formatDate(order['createdAt']),
                   style: TextStyle(fontSize: 14.sp),
@@ -66,11 +60,7 @@ class OrderCard extends StatelessWidget {
             Divider(height: 24.h),
 
             // Customer Info
-            Text(
-              'العميل: ${contact['name'] ?? 'غير معروف'}',
-              style: TextStyle(fontSize: 14.sp),
-            ),
-            SizedBox(height: 8.h),
+           
             Text(
               'التليفون: ${contact['phone'] ?? 'غير متوفر'}',
               style: TextStyle(fontSize: 14.sp),

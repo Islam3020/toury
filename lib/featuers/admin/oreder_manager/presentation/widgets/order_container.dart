@@ -115,7 +115,7 @@ class _OrderContainerState extends State<OrderContainer> {
           Gap(10.h),
 
           // قائمة المنتجات
-          ...items.map((item) => _buildProductItem(item)).toList(),
+          ...items.map((item) => _buildProductItem(item)),
 
           Gap(15.h),
           Row(
