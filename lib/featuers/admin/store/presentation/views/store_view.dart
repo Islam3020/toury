@@ -62,6 +62,10 @@ class _StoreViewState extends State<StoreView> {
             icon: const Icon(Icons.logout),
             onPressed: () {
               AppLocalStorage.removeData(key: AppLocalStorage.userToken);
+              AppLocalStorage.removeData(
+                key: AppLocalStorage.userType,
+                
+              );
               pushReplacement(context,const LoginView());
             },
           ),

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:toury/core/functions/navigation.dart';
+import 'package:toury/core/services/local_storage.dart';
 import 'package:toury/core/utils/colors.dart';
 import 'package:toury/core/widgets/custom_button.dart';
 import 'package:toury/featuers/auth/presentation/pages/login_view.dart';
@@ -80,6 +81,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           width: 100.w,
                           text: 'هيا بنا',
                           onPressed: () {
+                            AppLocalStorage.cacheData(key: AppLocalStorage.isOnboardingShown, value: true);
                            pushAndRemoveUntil(context,const LoginView()); 
                           },
                         ),

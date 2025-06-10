@@ -23,6 +23,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   void initState() {
     super.initState();
     _userId = AppLocalStorage.getData(key: AppLocalStorage.userToken);
+    AppLocalStorage.removeData(key: AppLocalStorage.userType);
     _loadData();
   }
 

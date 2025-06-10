@@ -125,8 +125,10 @@ void getCartItems(String userId) {
       }
 
       await batch.commit();
+      emit(CartEmpty());
     } catch (e) {
       debugPrint('Error clearing cart: $e');
+       emit(CartError('فشل في مسح السلة'));
     }
   }
 Future<void> createOrder({

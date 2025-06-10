@@ -1,13 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:toury/core/functions/dialogs.dart';
 import 'package:toury/core/functions/navigation.dart';
+import 'package:toury/core/services/local_storage.dart';
 import 'package:toury/core/widgets/custom_button.dart';
 import 'package:toury/featuers/admin/products_manager/presentation/cubit/product_manager_cubit.dart';
 import 'package:toury/featuers/admin/products_manager/presentation/cubit/product_manager_state.dart';
 import 'package:toury/featuers/admin/products_manager/presentation/widgets/edit_product.dart';
+import 'package:toury/featuers/auth/presentation/pages/login_view.dart';
 
 class ProductManagerView extends StatefulWidget {
   const ProductManagerView({super.key});
@@ -21,6 +24,22 @@ class _ProductManagerViewState extends State<ProductManagerView> {
   TextEditingController productTypeController = TextEditingController();
   TextEditingController productPriceController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+   User? user;
+
+  Future<void> _getUser() async {
+    user = FirebaseAuth.instance.currentUser;
+  }
+
+  @override
+  void initState() {
+    
+    super.initState();
+    AppLocalStorage.cacheData(
+      key: AppLocalStorage.userType,
+      value: 'admin',
+    );
+    _getUser();
+  }
 
   @override
   Widget build(BuildContext context) {

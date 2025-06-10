@@ -1,9 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:toury/core/functions/dialogs.dart';
 import 'package:toury/core/functions/navigation.dart';
+import 'package:toury/core/services/local_storage.dart';
 import 'package:toury/core/utils/colors.dart';
 import 'package:toury/core/utils/text_style.dart';
+import 'package:toury/featuers/auth/presentation/pages/login_view.dart';
 import 'package:toury/featuers/customer/home/presentation/widgets/category_details.dart';
 
 
@@ -18,10 +22,20 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<String> categories = [];
   bool isLoading = true;
+ User? user;
 
+  Future<void> _getUser() async {
+    user = FirebaseAuth.instance.currentUser;
+  }
   @override
   void initState() {
     super.initState();
+    AppLocalStorage.cacheData(
+      key: AppLocalStorage.userType,
+      value: 'user',
+    );
+    
+    _getUser(); 
     getProductTypes();
   }
 
