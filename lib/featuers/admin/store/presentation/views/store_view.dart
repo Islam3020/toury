@@ -42,7 +42,7 @@ class _StoreViewState extends State<StoreView> {
     final picked = await showDatePicker(
       context: context,
       initialDate: _selectedDate,
-      firstDate: DateTime(2023),
+      firstDate: DateTime(2025),
       lastDate: DateTime.now(),
     );
     if (picked != null && picked != _selectedDate) {

@@ -10,7 +10,6 @@ import 'package:toury/core/widgets/custom_button.dart';
 import 'package:toury/featuers/admin/products_manager/presentation/cubit/product_manager_cubit.dart';
 import 'package:toury/featuers/admin/products_manager/presentation/cubit/product_manager_state.dart';
 import 'package:toury/featuers/admin/products_manager/presentation/widgets/edit_product.dart';
-import 'package:toury/featuers/auth/presentation/pages/login_view.dart';
 
 class ProductManagerView extends StatefulWidget {
   const ProductManagerView({super.key});

@@ -42,10 +42,7 @@ class _RegisterViewState extends State<RegisterView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.white,
-        leading: const BackButton(),
-      ),
+     
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthErrorState) {
@@ -105,7 +102,7 @@ class _RegisterViewState extends State<RegisterView> {
                         controller: _emailController,
                         textAlign: TextAlign.end,
                         decoration: const InputDecoration(
-                          hintText: 'Sayed@example.com',
+                          hintText: 'الايميل',
                           prefixIcon: Icon(Icons.email_rounded),
                         ),
                         validator: (value) {

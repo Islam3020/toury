@@ -82,7 +82,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                           text: 'هيا بنا',
                           onPressed: () {
                             AppLocalStorage.cacheData(key: AppLocalStorage.isOnboardingShown, value: true);
-                           pushAndRemoveUntil(context,const LoginView()); 
+                           pushReplacement(context,const LoginView()); 
                           },
                         ),
                         if (currentPage != introPages.length - 1)

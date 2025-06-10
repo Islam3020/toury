@@ -40,12 +40,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColors.white,
-        leading: const BackButton(
-          color: AppColors.color1,
-        ),
-      ),
+      
       body: BlocConsumer<AuthCubit, AuthState>(
         listener: (context, state) {
           if (state is AuthErrorState) {
@@ -76,10 +71,7 @@ class _LoginViewState extends State<LoginView> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      // Image.asset(
-                      //   'assets/images/logo.jpeg',
-                      //   height: 200,
-                      // ),
+                      
                       Lottie.asset("assets/images/logo.json",
                           width: 200.w, height: 200.h),
                       const SizedBox(height: 20),

@@ -29,12 +29,12 @@ class _SplashScreenState extends State<SplashScreen> {
 Future<void> navigateAfterSplash() async {
   await Future.delayed(const Duration(seconds: 4));
   
-  final isOnboardingShown = await AppLocalStorage.getData(key: AppLocalStorage.isOnboardingShown) == true;
-  final userType = await AppLocalStorage.getData(key: AppLocalStorage.userType);
+  bool isOnboardingShown = await AppLocalStorage.getData(key: AppLocalStorage.isOnboardingShown) == true;
+  
 
-  if (userType != null) {
-    if (userType == 'admin') {
-      if (mounted) pushReplacement(context, const AdminNavBar());
+  if (AppLocalStorage.getData(key: AppLocalStorage.userType) != null) {
+    if (AppLocalStorage.getData(key: AppLocalStorage.userType) == 'admin') {
+      if (mounted) pushAndRemoveUntil(context, const AdminNavBar());
     } else {
       if (mounted) pushReplacement(context, const CustomerNavBar());
     }
